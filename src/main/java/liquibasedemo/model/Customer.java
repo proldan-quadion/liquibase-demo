@@ -2,6 +2,7 @@ package liquibasedemo.model;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity(name = "customers")
@@ -12,6 +13,7 @@ public class Customer extends ModelEntity{
 	private String address;
 	private Date dateOfBirth;
 	private int numberOfPurchases;
+	@Column(columnDefinition="Decimal(10,2)")
 	private double amountSpent;
 	
 	

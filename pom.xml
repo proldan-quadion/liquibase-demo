@@ -50,15 +50,6 @@
 			</resource>
 		</resources>
 		<plugins>
-		<!-- 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<useSystemClassLoader>false</useSystemClassLoader>
-				</configuration>
-			</plugin>
-		-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -96,51 +87,6 @@
 				    
 				</dependencies>
 		    </plugin>
-		    
-		   <!-- 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<addResources>true</addResources>
-					<profiles>
-						<profile>
-							${build.profile.id}
-						</profile>
-					</profiles>
-				</configuration>
-			</plugin>
-
-			
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<executions>
-					<execution>
-						<id>read-properties</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>read-project-properties</goal>
-						</goals>
-						<configuration>
-							<files>
-								<file>./src/main/resources/application-${build.profile.id}.properties</file>
-							</files>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
- 			-->
-			
 		</plugins>
 	</build>
 	
