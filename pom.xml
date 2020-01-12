@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>liquibase-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+  
+  	<parent>
+	  	<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.2.RELEASE</version>
+		<relativePath />
+   	</parent>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.liquibase</groupId>
+		    <artifactId>liquibase-maven-plugin</artifactId>
+		    <version>3.8.4</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName>liquibase-demo</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+		<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<useSystemClassLoader>false</useSystemClassLoader>
+				</configuration>
+			</plugin>
+		-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		 
+
+			<plugin>
+		        <groupId>org.liquibase</groupId>
+		        <artifactId>liquibase-maven-plugin</artifactId>
+		        <version>3.8.4</version>
+		        <configuration>                  
+		            <propertyFile>src/main/resources/liquibase/config/liquibase-${build.profile.id}.properties</propertyFile>
+		            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+		        </configuration>
+		        <executions>
+	                <execution>
+	                    <phase>process-resources</phase>
+	                </execution>
+	            </executions>
+		        <dependencies>
+				    <dependency>
+					    <groupId>org.liquibase.ext</groupId>
+					    <artifactId>liquibase-hibernate5</artifactId>
+					    <version>3.6</version>
+					</dependency>
+					
+					<dependency>
+				  		<groupId>org.springframework.boot</groupId>
+				        <artifactId>spring-boot-starter-data-jpa</artifactId>
+				        <version>2.2.2.RELEASE</version>
+				    </dependency>
+				    
+				</dependencies>
+		    </plugin>
+		    
+		   <!-- 
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<addResources>true</addResources>
+					<profiles>
+						<profile>
+							${build.profile.id}
+						</profile>
+					</profiles>
+				</configuration>
+			</plugin>
+
+			
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<id>read-properties</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>./src/main/resources/application-${build.profile.id}.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+ 			-->
+			
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>development</id>
+			<properties>
+				<build.profile.id>development</build.profile.id>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>production</id>
+			<properties>
+				<build.profile.id>production</build.profile.id>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>
