@@ -31,4 +31,22 @@
     <changeSet author="RA (generated)" id="1579039969982-3">
         <dropColumn columnName="amount_spent" tableName="customers"/>
     </changeSet>
+    <changeSet author="RA (generated)" id="1579042352645-1">
+        <addColumn tableName="customers">
+            <column name="city" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="RA (generated)" id="1579042352645-2">
+        <addColumn tableName="customers">
+            <column name="country" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="RA (generated)" id="1579042352645-3">
+        <addColumn tableName="customers">
+            <column name="street" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="RA (generated)" id="1579042352645-4">
+        <dropColumn columnName="address" tableName="customers"/>
+    </changeSet>
 </databaseChangeLog>
