@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Pedro (generated)" id="1578963620691-1">
+        <createTable tableName="customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="customersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="amount_spent" type="DECIMAL(10, 2)"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="number_of_purchases" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Pedro (generated)" id="1578964908552-1">
+        <createTable tableName="customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="customersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="amount_spent" type="DECIMAL(10, 2)"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="number_of_purchases" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Pedro (generated)" id="1578965193298-1">
+        <createTable tableName="customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="customersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="amount_spent" type="DECIMAL(10, 2)"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="number_of_purchases" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
