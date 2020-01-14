@@ -1,9 +1,11 @@
 package liquibasedemo.model;
 
 import java.sql.Date;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity(name = "customers")
 public class Customer extends ModelEntity{
@@ -13,8 +15,8 @@ public class Customer extends ModelEntity{
 	private String address;
 	private Date dateOfBirth;
 	private int numberOfPurchases;
-	@Column(columnDefinition="Decimal(10,2)")
-	private double amountSpent;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "purchaser")
+	private List<Purchase> purchases;
 	
 	
 	public String getName() {
@@ -51,12 +53,12 @@ public class Customer extends ModelEntity{
 	public void setNumberOfPurchases(int numberOfPurchases) {
 		this.numberOfPurchases = numberOfPurchases;
 	}
+	public List<Purchase> getPurchases() {
+		return purchases;
+	}
+	public void setPurchases(List<Purchase> purchases) {
+		this.purchases = purchases;
+	}
 	
-	public double getAmountSpent() {
-		return amountSpent;
-	}
-	public void setAmountSpent(double amountSpent) {
-		this.amountSpent = amountSpent;
-	}
 
 }
